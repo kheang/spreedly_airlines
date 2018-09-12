@@ -32,3 +32,5 @@
 
 # Ignore credentials file
 /config/credentials.yml.enc
+
+.bash_profile

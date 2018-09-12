@@ -1,0 +1,42 @@
+
+<h2>Flight Details</h2>
+<p>Destination: <%= @flight.destination %></p>
+<p>Price: <%= @flight.price %></p>
+
+<hr>
+
+<h2>Use Saved Card</h2>
+
+<%= form_tag purchases_path, method: :post, id: 'receiver-form' do %>
+  <%= hidden_field_tag :destination, @flight.destination %>
+  <%= hidden_field_tag :expedia_checkout, '1' %>
+  <%= select_tag :payment_method_token,
+                 options_for_select(@payment_methods || []),
+                 id: 'payment_method_select'
+  %>
+  <%= submit_tag 'Checkout with Expedia' %>
+<% end %>
+
+<hr>
+
+<h2>Checkout with new credit card</h2>
+
+<%= form_tag purchases_path, method: :post, id: 'payment-form' do %>
+  <%= hidden_field_tag :destination, @flight.destination %>
+  <input type="hidden" name="payment_method_token" id="payment_method_token">
+  <%= check_box_tag 'save_payment' %> Save credit card for future use<br/>
+  <input
+    type="button"
+    value="Checkout"
+    onclick="checkout(
+      '<%= Rails.application.credentials.spreedly[:env_key] %>',
+      '<%= number_to_currency(@flight.price) %>'
+    )"
+  >
+<% end %>
+
+<script>
+
+</script>
+
+

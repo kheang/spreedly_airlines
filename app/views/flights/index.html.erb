@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm">Selection</div>
+    <div class="col-sm">Destination</div>
+    <div class="col-sm">Price</div>
+  </div>
+  <% @flights.each do |flight| %>
+    <div class="row">
+      <div class="col-sm"><%= radio_button_tag(:destination, flight.destination)  %></div>
+      <div class="col-sm"><%= flight.destination %></div>
+      <div class="col-sm"><%= flight.price %></div>
+    </div>
+  <% end %>
+</div>
+
+<p></p>
+
+<%= button_to 'Purchase', new_purchase_path, { method: :get, params: { destination: nil }, disabled: true } %>

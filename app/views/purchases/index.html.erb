@@ -1,0 +1,20 @@
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">Date</div>
+    <div class="col-sm">Amount</div>
+    <div class="col-sm">Full Name</div>
+    <div class="col-sm">Last 4 Digits</div>
+    <div class="col-sm">Card Type</div>
+  </div>
+  <% @purchases.each do |purchase| %>
+    <div class="row">
+      <div class="col-sm"><%= purchase['created_at'] %></div>
+      <div class="col-sm"><%= number_to_currency(purchase['amount'].to_i / 100.0) %></div>
+      <div class="col-sm"><%= purchase['full_name'] %></div>
+      <div class="col-sm"><%= purchase['last_four_digits'] %></div>
+      <div class="col-sm"><%= purchase['card_type'] %></div>
+    </div>
+  <% end %>
+</div>

@@ -1,5 +1,8 @@
 {
   "name": "airlines",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "axios": "^0.18.0",
+    "jquery": "^3.3.1"
+  }
 }
