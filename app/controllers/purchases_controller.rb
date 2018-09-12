@@ -22,6 +22,7 @@ class PurchasesController < ApplicationController
       redirect_to new_purchase_path(destination: params['destination'])
     end
   end
+
   def index
     transactions = GetSpreedlyTransactions.new(state: 'succeeded').run!
     @purchases = transactions.
